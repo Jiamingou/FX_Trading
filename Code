@@ -21,6 +21,8 @@ extern int stopLossPips = 30;
 ########## 关于条件控制 ##########
 1.
 
+        int DayofWeek = dayofWeek()  # 初始化，并假设我们尝试去call这个function。
+
         If (DayofWeek ==1)
         {
             Alert("今天是周一");
@@ -36,6 +38,24 @@ extern int stopLossPips = 30;
 
 
 2. 
+
+        int DayofWeek = dayofWeek() 
+
+        switch (DayofWeek)
+        {
+            case 1 : Alert("前面的一代表了周一");break;
+            case 2 : Alert("前面的二代表了周二");break;
+            case 3 : Alert("前面的三代表了周三");break;
+            case 4 : Alert("前面的四代表了周四");break;
+            case 5 : Alert("前面的五代表了周五");break;
+            case 6 : Alert("前面的六代表了周六");break;
+            case 0 : Alert("前面的零代表了周日");break;
+            default : Alert("这是其它没有值的情况，就错误情况");break;
+
+        }
+
+
+---------------------------------------------------------------------------------------------------------------
 
 
 
