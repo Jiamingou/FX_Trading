@@ -4,7 +4,6 @@
 
 ---------------------------------------------------------------------------------------------------------------
 ########## 关于Input ##########（我们需要在页头加一个 #property show_input）<-那么就可以进行更改了
-
 1. input类型不可以在代码框内进行更改
 input int takeProfitPips = 40; 
 
@@ -22,18 +21,18 @@ extern int stopLossPips = 30;
 ########## 关于条件控制 ##########
 1.
 
-If (DayofWeek ==1)
-{
-    Alert("今天是周一");
-}
-else if ( DayofWeek ==2 || DayofWeek ==3 || DayofWeek ==4 )   # ||是或者的意思
-{
-    Alert("今天是：”+ DayofWeek);
-}
-else
-{
-    Alert("日期错误”);
-}
+        If (DayofWeek ==1)
+        {
+            Alert("今天是周一");
+        }
+        else if ( DayofWeek ==2 || DayofWeek ==3 || DayofWeek ==4 )   # ||是或者的意思
+        {
+            Alert("今天是：”+ DayofWeek);
+        }
+        else
+        {
+            Alert("日期错误”);
+        }
 
 
 2. 
