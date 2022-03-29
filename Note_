@@ -125,8 +125,8 @@
 
     --- Example ---
     for(int i=0; i<5; i++)     # 初始化i为零，每一次循环i会自动加1，直到i=5的时候循环停止
-   {
-      Alert("Hello:" +i );
+   { 
+      Alert(Time[i]+ "  " + Open[i]+ "  " + High[i]+ "  " + Low[i] + "  " + Close[i] + "  " + Volume[i]);    # 循环并提醒前五只蜡烛的信息
    }
 
 
