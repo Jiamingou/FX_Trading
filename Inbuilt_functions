@@ -1,3 +1,8 @@
 时间
 1. TimeLocal()
 2. TimeDayOfWeek()
+
+数据
+1.Digits (交易品种的小数位)
+2.Bid (交易品种的Bid)
+3.Ask (交易品种的Ask)
