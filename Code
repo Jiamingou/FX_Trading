@@ -10,3 +10,6 @@ input int takeProfitPips = 40;
 extern int stopLossPips = 30;  
 
 
+########## 关于Print与Alert ##########
+# Print（“”）只会在控制台出现
+# Alert（“”）会在程序内弹出提示框
