@@ -10,17 +10,27 @@
 
 ---------------------------------------------------------------------------------------------------------------
 ########## 关于数组Array ##########
-1.
-- 先输入数据类型，然后再在[]内输入想要的存储空间，然后再在{}里输入数组
-    int MinStopLevel[4] = {10,20,40,100} 
-- 取出数组里的数字？使用相应的Index（Zero Based Indexing）
-    MinStopLevel[2]  # 输出为40
-    
-2. 这个给个好玩的运用例子
+1. 一维数组
 
-   Alert(""); #隔行
-   string Weekdays[7] = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
-   Alert(Weekdays[DayOfWeek()]);  # DayOfWeek()函数会返回工作日的数字，然后我们可以将其转化为名称，例如返回2则为Tuesday。
+    - 先输入数据类型，然后再在[]内输入想要的存储空间，然后再在{}里输入数组
+        int MinStopLevel[4] = {10,20,40,100} 
+    - 取出数组里的数字？使用相应的Index（Zero Based Indexing）
+        MinStopLevel[2]  # 输出为40
+
+       ---这里给个好玩的运用例子---
+       Alert(""); #隔行
+       string Weekdays[7] = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+       Alert(Weekdays[DayOfWeek()]);  # DayOfWeek()函数会返回工作日的数字，然后我们可以将其转化为名称，例如返回2则为Tuesday。
+   
+ 2. 二维数组
+ 
+    - 先输入数据类型，然后再在[]内输入行与列，假如两行三列，那么则为[2，3]
+         int MinPipLevels[2,3] = {20,50,80,120,150,180}
+         
+         ---实际的长相---              举个栗子：
+              0     1     2           MinPipLevels[0,1] 为 50
+         0: { 20  , 50  , 80  }       MinPipLevels[1,2] 为 180
+         1: { 120 , 150 , 180 }
 
 
 ---------------------------------------------------------------------------------------------------------------
