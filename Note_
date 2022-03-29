@@ -129,6 +129,11 @@
       Alert(Time[i]+ "  " + Open[i]+ "  " + High[i]+ "  " + Low[i] + "  " + Close[i] + "  " + Volume[i]);    # 循环并提醒前五只蜡烛的信息
    }
 
+    --- Example 2 ---
+    for(int i=0; i<Bars; i++)     # 初始化i为零，每一次循环i会自动加1，直到i=Bars的时候循环停止
+   { 
+      Alert(Time[i]+ "  " + Open[i]+ "  " + High[i]+ "  " + Low[i] + "  " + Close[i] + "  " + Volume[i]);    # 循环并提醒当前品种所有的历史数据信息
+   }
 
 
 
