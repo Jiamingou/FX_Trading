@@ -1,6 +1,12 @@
-# 把自己写的方程放在mqh文件里面，然后放到Include的文件夹
-# 当我们需要的时候，在页头导入这个-> # include <文件的名字.mqh>
+# 把自己写的方程放在mqh文件里面，然后放到Include的文件夹，当我们需要的时候，在页头导入这个：
+    # include <文件的名字.mqh>
 
-# 关于Input
-input int takeProfitPips = 40;  # input类型不可以在代码框内进行更改。
-extern int stopLossPips = 30;  # extern的类型可以在代码框内进行更改，例如stopLossPips++; 意思就是将用户输入的数字加一，可以进行更改
+
+########## 关于Input ##########（我们需要在页头加一个 #property show_input）<-那么就可以进行更改了
+# input类型不可以在代码框内进行更改
+input int takeProfitPips = 40; 
+
+# extern的类型可以在代码框内进行更改，例如stopLossPips++;（将输入的值加一）
+extern int stopLossPips = 30;  
+
+
