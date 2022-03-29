@@ -136,6 +136,25 @@
    }
 
 
+2. While loop
+
+
+   --- 例子 ---
+   bool notInPosition = True;   
+   int i = 0;
+   
+   while(notInPosition)  # 当我没有头寸的时候，不断循环
+   {
+      Alert(Time[i]+ "  " + Open[i]+ "  " + High[i]+ "  " + Low[i] + "  " + Close[i] + "  " + Volume[i]);
+      i++;
+      
+      if(Close[i] > 1.1591)  # 检查，如果数据的收盘价大于1.1591的话
+      {
+         Alert("Price above 1.1591, entering trade, exiting while loop");
+         notInPosition = False;   # 更改变量内容，退出循环
+      }
+      
+   }
 
 
 
