@@ -56,10 +56,28 @@ extern int stopLossPips = 30;
 
 
 ---------------------------------------------------------------------------------------------------------------
+########## 关于方程创建 ##########
 
+# 首先肯定先要确定方程的数据类型
 
+1.
+        # 我们要确定好每个数据的类型，还要保证最后返回一个值
+        
+        double CalculateStopLoss(bool isLong, double entryPrice, int pips)        
+        {
+           double stopLoss;
 
+           if(isLong)  //if long position
+           {
+              stopLoss =  entryPrice - pips * GetPipValue();
+           }
+           else
+           {
+              stopLoss = entryPrice + pips * GetPipValue();
+           }
+           return stopLoss;
 
+        }
 
 
 
