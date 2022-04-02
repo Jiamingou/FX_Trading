@@ -42,6 +42,27 @@
 2. iBands # https://docs.mql4.com/indicators/ibands #布林带
 
   --- 例子 ---
+  int bbPeriod = 20;
+  int bbStd = 2;
+
+  void OnStart()
+   {
+  //---
+
+     Alert("");
+     double bbLowerBand = iBands(NULL,0,bbPeriod,bbStd,0,PRICE_CLOSE,MODE_LOWER,0);  # NULL代表的是当前的货币对，详细请查看文档。
+     double bbUpperBand = iBands(NULL,0,bbPeriod,bbStd,0,PRICE_CLOSE,MODE_UPPER,0);
+     double bbMidBank = iBands(NULL,0,bbPeriod,bbStd,0,PRICE_CLOSE,MODE_MAIN,0);
+
+     Alert("bbLowerBand:" + NormalizeDouble(bbLowerBand,Digits));
+     Alert("bbUpperBand:" + NormalizeDouble(bbUpperBand,Digits));
+     Alert("bbMidBank:" + NormalizeDouble(bbMidBank,Digits));
+
+
+  //+------------------------------------------------------------------+
+  }
+
+
 
 
 
