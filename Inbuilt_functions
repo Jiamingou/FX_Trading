@@ -19,7 +19,7 @@
 
 ----------------------------------------------------------------------------------------------------------------------
 ############### 技术指标 ###############
-1. iMA() # https://docs.mql4.com/indicators/ima 详细看这里的文档。
+1. iMA() # https://docs.mql4.com/indicators/ima # 移动平均线，详细看这里的文档。
 
   --- 例子 ---
   double maValue = iMA(NULL,0,maPeriod,0,MODE_SMA,PRICE_CLOSE,0); # 把MA最后的值放入maValue这个变量
