@@ -65,7 +65,21 @@
 
 3. iRSI # https://docs.mql4.com/indicators/irsi # RSI相对强弱指标
 
+      --- 例子 ---
+      int rsiPeriod = 14;
+      
+      void OnStart()
+       {
+      //---
 
+         Alert("");
+         double rsiValue = iRSI(NULL,0,rsiPeriod,0,0);
+
+         Alert("rsiValue:" + NormalizeDouble(rsiValue,2));  # RSI两个小数点就够了
+
+
+      //+------------------------------------------------------------------+
+      }
 
 
 
