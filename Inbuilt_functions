@@ -21,48 +21,49 @@
 ############### 技术指标 ###############
 1. iMA() # https://docs.mql4.com/indicators/ima # 移动平均线，详细看这里的文档。
 
-  --- 例子 ---
-  int maPeriod = 20;
-  void OnStart()
- {
-  double maValue = iMA(NULL,0,maPeriod,0,MODE_SMA,PRICE_CLOSE,0); # 把MA最后的值放入maValue这个变量，得到最后一支蜡烛所对应的移动平均值。
-  Alert("maValue:" + NormalizeDouble(maValue,Digits));  # 然后打印出来告诉用户，这个NormalizeDouble的意思就是限制小数位，让它跟当前交易的品种小数位相同。
-   }
+      --- 例子 ---
+      int maPeriod = 20;
+      void OnStart()
+     {
+      double maValue = iMA(NULL,0,maPeriod,0,MODE_SMA,PRICE_CLOSE,0); # 把MA最后的值放入maValue这个变量，得到最后一支蜡烛所对应的移动平均值。
+      Alert("maValue:" + NormalizeDouble(maValue,Digits));  # 然后打印出来告诉用户，这个NormalizeDouble的意思就是限制小数位，让它跟当前交易的品种小数位相同。
+       }
 
-  -- 常见的问题 --
-  Q: 那如果我想要前一支蜡烛所对应的移动平均线上的值怎么办？
-  A:
-    double maValue = iMA(NULL,0,maPeriod,1,MODE_SMA,PRICE_CLOSE,0);  # 更改里面的参数，如果你仔细看的话，我把第四个参数改成1了，具体请参照文档链接。
-    double maValue = iMA(NULL,0,maPeriod,2,MODE_SMA,PRICE_CLOSE,0);  # 同理前面第二支蜡烛，把第四个参数改成2，以此类推。
+      -- 常见的问题 --
+      Q: 那如果我想要前一支蜡烛所对应的移动平均线上的值怎么办？
+      A:
+        double maValue = iMA(NULL,0,maPeriod,1,MODE_SMA,PRICE_CLOSE,0);  # 更改里面的参数，如果你仔细看的话，我把第四个参数改成1了，具体请参照文档链接。
+        double maValue = iMA(NULL,0,maPeriod,2,MODE_SMA,PRICE_CLOSE,0);  # 同理前面第二支蜡烛，把第四个参数改成2，以此类推。
 
-  Q: double maValue = iMA(NULL,0,maPeriod,0,MODE_SMA,PRICE_CLOSE,0) 最后那个参数0代表了什么？
-  A: 那个是整条线的平移，譬如你把数值改为2的话，那么整条线将会往右移动两个单位。但是依照我的想法来看的话，我们目前不需要这种“高级的”东西，意思就是没有用。
+      Q: double maValue = iMA(NULL,0,maPeriod,0,MODE_SMA,PRICE_CLOSE,0) 最后那个参数0代表了什么？
+      A: 那个是整条线的平移，譬如你把数值改为2的话，那么整条线将会往右移动两个单位。但是依照我的想法来看的话，我们目前不需要这种“高级的”东西，意思就是没有用。
 
 
 2. iBands # https://docs.mql4.com/indicators/ibands #布林带
 
-  --- 例子 ---
-  int bbPeriod = 20;
-  int bbStd = 2;
+      --- 例子 ---
+      int bbPeriod = 20;
+      int bbStd = 2;
 
-  void OnStart()
-   {
-  //---
+      void OnStart()
+       {
+      //---
 
-     Alert("");
-     double bbLowerBand = iBands(NULL,0,bbPeriod,bbStd,0,PRICE_CLOSE,MODE_LOWER,0);  # NULL代表的是当前的货币对，详细请查看文档。
-     double bbUpperBand = iBands(NULL,0,bbPeriod,bbStd,0,PRICE_CLOSE,MODE_UPPER,0);
-     double bbMidBank = iBands(NULL,0,bbPeriod,bbStd,0,PRICE_CLOSE,MODE_MAIN,0);
+         Alert("");
+         double bbLowerBand = iBands(NULL,0,bbPeriod,bbStd,0,PRICE_CLOSE,MODE_LOWER,0);  # NULL代表的是当前的货币对，详细请查看文档。
+         double bbUpperBand = iBands(NULL,0,bbPeriod,bbStd,0,PRICE_CLOSE,MODE_UPPER,0);
+         double bbMidBank = iBands(NULL,0,bbPeriod,bbStd,0,PRICE_CLOSE,MODE_MAIN,0);
 
-     Alert("bbLowerBand:" + NormalizeDouble(bbLowerBand,Digits));
-     Alert("bbUpperBand:" + NormalizeDouble(bbUpperBand,Digits));
-     Alert("bbMidBank:" + NormalizeDouble(bbMidBank,Digits));
-
-
-  //+------------------------------------------------------------------+
-  }
+         Alert("bbLowerBand:" + NormalizeDouble(bbLowerBand,Digits));
+         Alert("bbUpperBand:" + NormalizeDouble(bbUpperBand,Digits));
+         Alert("bbMidBank:" + NormalizeDouble(bbMidBank,Digits));
 
 
+      //+------------------------------------------------------------------+
+      }
+
+
+3. iRSI # https://docs.mql4.com/indicators/irsi # RSI相对强弱指标
 
 
 
