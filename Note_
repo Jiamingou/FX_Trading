@@ -158,18 +158,49 @@
    
    
 ---------------------------------------------------------------------------------------------------------------
+########## 关于数据类型enum ##########
+1. 这种数据类型怎么设置呢？
+
+    --- 如下 ---                                  
+    enum ENUM_TRADING_METHOD                
+    {                                            
+       Very_Passive,                                                                                          
+       Passive,                                  
+       Normal,
+       Aggressive,
+       Very_Aggresive
+    };
+
+    input ENUM_TRADING_METHOD myTradingMethod = Aggressive;    # 初始化变量“myTradingMethod”，默认“Aggressive”
+
+    void OnStart()  # 程序开始
+     {
+    //---
+
+       Alert("");
+
+       if(myTradingMethod == Very_Passive)               # 总的来说，如果用户在界面选择了“Very_Passive”的话，程序就会做出相应的反应。
+       {
+          Alert("Trading In Very Passive Way");             # 在这个例子里，就是打印出 "Trading In Very Passive Way" 这句话。
+       }
+       else if(myTradingMethod == Normal)
+       {
+          Alert("Trading In a normal Way");
+       }
+       else if(myTradingMethod == Aggressive)
+       {
+          Alert("Trading In a Aggressive Way");
+       }
+
+    //+------------------------------------------------------------------+
+     }
 
 
 
 
 
 
-
-
-
-
-
-
+---------------------------------------------------------------------------------------------------------------
 
 
 
