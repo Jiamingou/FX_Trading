@@ -26,10 +26,14 @@
   Alert("maValue:" + NormalizeDouble(maValue,Digits));  # 然后打印出来告诉用户，这个NormalizeDouble的意思就是限制小数位，让它跟当前交易的品种小数位相同。
 
   -- 问题 --
-  那如果我想要前一支蜡烛所对应的移动平均线上的值怎么办？
-  double maValue = iMA(NULL,0,maPeriod,1,MODE_SMA,PRICE_CLOSE,0);  # 更改里面的参数，如果你仔细看的话，我把第四个参数改成1了，具体请参照文档链接。
-  double maValue = iMA(NULL,0,maPeriod,2,MODE_SMA,PRICE_CLOSE,0);  # 同理前面第二支蜡烛，把第四个参数改成2，以此类推。
-  
+  Q: 那如果我想要前一支蜡烛所对应的移动平均线上的值怎么办？
+  A:
+    double maValue = iMA(NULL,0,maPeriod,1,MODE_SMA,PRICE_CLOSE,0);  # 更改里面的参数，如果你仔细看的话，我把第四个参数改成1了，具体请参照文档链接。
+    double maValue = iMA(NULL,0,maPeriod,2,MODE_SMA,PRICE_CLOSE,0);  # 同理前面第二支蜡烛，把第四个参数改成2，以此类推。
+
+  Q: double maValue = iMA(NULL,0,maPeriod,0,MODE_SMA,PRICE_CLOSE,0) 最后那个参数0代表了什么？
+  A: 那个是整条线的平移，譬如你把数值改为2的话，那么整条线将会往右移动两个单位。但是依照我的想法来看的话，我们目前不需要这种“高级的”东西，意思就是没有用。
+
 2. 
 
 
