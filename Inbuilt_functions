@@ -21,7 +21,7 @@
 ############### 交易命令 ###############
 1.
 - IsTradeAllowed() # 返回true/false，检查自动交易有没有开启。
-- IsTradeAllowed(NULL,TimeCurrent())  # 返回true/false，检查当前的时间能否进行交易。
+- IsTradeAllowed(NULL,TimeCurrent())  # 返回true/false，检查当前的时间能否进行交易+检查自动交易是否开启。
 
 2.
 
