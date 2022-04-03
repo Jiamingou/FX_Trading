@@ -56,8 +56,6 @@
 
       void OnStart()
        {
-      //---
-
          Alert("");
          double bbLowerBand = iBands(NULL,0,bbPeriod,bbStd,0,PRICE_CLOSE,MODE_LOWER,0);  # NULL代表的是当前的货币对，详细请查看文档。
          double bbUpperBand = iBands(NULL,0,bbPeriod,bbStd,0,PRICE_CLOSE,MODE_UPPER,0);
@@ -66,9 +64,6 @@
          Alert("bbLowerBand:" + NormalizeDouble(bbLowerBand,Digits));
          Alert("bbUpperBand:" + NormalizeDouble(bbUpperBand,Digits));
          Alert("bbMidBank:" + NormalizeDouble(bbMidBank,Digits));
-
-
-      //+------------------------------------------------------------------+
       }
 
 
@@ -79,15 +74,10 @@
       
       void OnStart()
        {
-      //---
-
          Alert("");
          double rsiValue = iRSI(NULL,0,rsiPeriod,0,0);
 
          Alert("rsiValue:" + NormalizeDouble(rsiValue,2));  # RSI两个小数点就够了
-
-
-      //+------------------------------------------------------------------+
       }
 
 
