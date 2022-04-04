@@ -150,6 +150,15 @@
            return optimalLotSize;
 
         }
+        
+4. 
+        //跟着上面那个方程一起使用，这个版本是直接输入进场与止损，自动算出最优头寸。
+        double OptimalLotSize(double maxRiskPre, double entryPrice, double stopLoss)
+        {
+           int maxLossInPips = MathAbs(entryPrice - stopLoss)/GetPipValue();
+           double value = OptimalLotSize(maxRiskPre,maxLossInPips);
+           return value;
+        }
 
 
 
