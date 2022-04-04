@@ -1,0 +1,70 @@
+1. 
+              
+              
+              --- 代码开始 ---
+              int bbPeriod = 20;
+              int band1Std = 1;
+              int band2Std = 4;
+
+
+              void OnStart()
+               {
+              //---
+
+                 Alert("");
+
+                 double bbLower1 = iBands(NULL,0,bbPeriod,band1Std,0,PRICE_CLOSE,MODE_LOWER,0);
+                 double bbUpper1 = iBands(NULL,0,bbPeriod,band1Std,0,PRICE_CLOSE,MODE_UPPER,0);
+                 double bbMid = iBands(NULL,0,bbPeriod,band1Std,0,PRICE_CLOSE,MODE_MAIN,0);
+
+                 double bbLower2 = iBands(NULL,0,bbPeriod,band2Std,0,PRICE_CLOSE,MODE_LOWER,0);
+                 double bbUpper2 = iBands(NULL,0,bbPeriod,band2Std,0,PRICE_CLOSE,MODE_UPPER,0);
+
+                 if(Ask<bbLower1)//Buying
+                 {
+                    Alert("Price is below bbLower1, Sending buy order");
+                    double stopLossPrice = NormalizeDouble(bbLower2,Digits);
+                    double takeProfitPrice = NormalizeDouble(bbMid,Digits);
+                    Alert("Entry Price = " + Ask);
+                    Alert("Stop Loss Price = " + stopLossPrice);
+                    Alert("Take Profit Price = " + takeProfitPrice);
+
+                    //Send buy order
+                    int OrderID = OrderSend(NULL,OP_BUYLIMIT,0.01,Ask,10,stopLossPrice,takeProfitPrice);
+                    Alert("OrderID: " + OrderID);
+                 }
+                 else if(Bid>bbUpper1)//Shorting
+                 {
+                    Alert("Price is above bbUpper1, Sending short order");
+                    double stopLossPrice = NormalizeDouble(bbUpper2,Digits);
+                    double takeProfitPrice = NormalizeDouble(bbMid,Digits);
+                    Alert("Entry Price = " + (Bid-0.0001));
+                    Alert("Stop Loss Price = " + stopLossPrice);
+                    Alert("Take Profit Price = " + takeProfitPrice);
+
+                    //Send short order
+                    int OrderID = OrderSend(NULL,OP_SELLSTOP,0.01,Bid-0.0001,10,stopLossPrice,takeProfitPrice);
+                    Alert("OrderID: " + OrderID);
+                 }
+                  else
+                 {
+                    Alert("Error");
+                 }
+
+
+                 // Prints
+                 Alert(NormalizeDouble(bbLower1,Digits));
+                 Alert(NormalizeDouble(bbUpper1,Digits));
+
+                 Alert(NormalizeDouble(bbLower2,Digits));
+                 Alert(NormalizeDouble(bbUpper2,Digits));
+
+                 Alert(NormalizeDouble(bbMid,Digits));
+
+
+              //+------------------------------------------------------------------+
+              }
+              
+              
+              
+  
