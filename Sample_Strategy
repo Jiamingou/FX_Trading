@@ -33,7 +33,7 @@
                       Alert("Take Profit Price = " + takeProfitPrice);
 
                       //Send buy order
-                      int OrderID = OrderSend(NULL,OP_BUYSTOP,0.01,Ask+0.0001,10,stopLossPrice,takeProfitPrice);
+                      int OrderID = OrderSend(NULL,OP_BUYSTOP,0.01,Ask+0.0001,10,stopLossPrice,takeProfitPrice);  // 注意BuyStop与BuyLimit混淆
                       if(OrderID <0)
                       {
                          Alert("Order Rejected :", GetLastError());
