@@ -218,8 +218,6 @@
 
     void OnStart()  # 程序开始
      {
-    //---
-
        Alert("");
 
        if(myTradingMethod == Very_Passive)               # 总的来说，如果用户在界面选择了“Very_Passive”的话，程序就会做出相应的反应。
@@ -234,8 +232,6 @@
        {
           Alert("Trading In a Aggressive Way");
        }
-
-    //+------------------------------------------------------------------+
      }
 
 
