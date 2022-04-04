@@ -120,7 +120,7 @@
         }
         
 3.
-        double OptimalLotSize(double maxRiskPre, int maxLossInPips)
+        double OptimalLotSize(double maxRiskPre, int maxLossInPips)   //风险管理，最优化头寸，用这链接查询：https://www.myfxbook.com/forex-calculators/position-size/AUDJPY
         {
 
            double accEquity = AccountEquity();
