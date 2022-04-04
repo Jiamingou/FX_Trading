@@ -63,8 +63,7 @@
                       { 
                          Alert("Order Sent");
                       }
-
-
+                      
                    }
                     else
                    {
