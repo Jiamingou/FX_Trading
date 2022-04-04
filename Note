@@ -130,6 +130,13 @@
            Alert("Lot Size : " + lotsize);
 
            double tickValue= MarketInfo(NULL,MODE_TICKVALUE);
+           
+           if(Digits <= 3)
+           {
+              tickValue = tickValue/100 ;
+           }
+   
+           
            Alert("tickValue: " + tickValue);
 
            double maxLossDollar = accEquity * maxRiskPre;
