@@ -118,6 +118,32 @@
               return 0.01;
            }
         }
+        
+3.
+        double OptimalLotSize(double maxRiskPre, int maxLossInPips)
+        {
+
+           double accEquity = AccountEquity();
+           Alert(accEquity);
+
+           double lotsize = MarketInfo(NULL,MODE_LOTSIZE);
+           Alert("Lot Size : " + lotsize);
+
+           double tickValue= MarketInfo(NULL,MODE_TICKVALUE);
+           Alert("tickValue: " + tickValue);
+
+           double maxLossDollar = accEquity * maxRiskPre;
+           Alert("maxLossDollar:" + maxLossDollar);
+
+           double maxLossInQuoteCurr = maxLossDollar / tickValue;
+           Alert("maxLossInQuoteCurr:" + maxLossInQuoteCurr);
+
+           double optimalLotSize = NormalizeDouble(maxLossInQuoteCurr / (maxLossInPips * GetPipValue())/lotsize,2);
+           return optimalLotSize;
+
+        }
+
+
 
 
 ---------------------------------------------------------------------------------------------------------------
