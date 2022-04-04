@@ -28,12 +28,12 @@
                     Alert("Price is below bbLower1, Sending buy order");
                     double stopLossPrice = NormalizeDouble(bbLower2,Digits);
                     double takeProfitPrice = NormalizeDouble(bbMid,Digits);
-                    Alert("Entry Price = " + Ask);
+                    Alert("Entry Price = " + (Ask+0.0001));
                     Alert("Stop Loss Price = " + stopLossPrice);
                     Alert("Take Profit Price = " + takeProfitPrice);
 
                     //Send buy order
-                    int OrderID = OrderSend(NULL,OP_BUYLIMIT,0.01,Ask,10,stopLossPrice,takeProfitPrice);
+                    int OrderID = OrderSend(NULL,OP_BUYLIMIT,0.01,(Ask+0.0001),10,stopLossPrice,takeProfitPrice);
                     Alert("OrderID: " + OrderID);
                  }
                  else if(Bid>bbUpper1)//Shorting
