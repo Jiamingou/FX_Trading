@@ -119,48 +119,6 @@
            }
         }
         
-3.
-        //风险管理，最优化头寸，用这链接查询：https://www.myfxbook.com/forex-calculators/position-size/AUDJPY
-        double OptimalLotSize(double maxRiskPre, int maxLossInPips)  
-        {
-
-           double accEquity = AccountEquity();
-           Alert(accEquity);
-
-           double lotsize = MarketInfo(NULL,MODE_LOTSIZE);
-           Alert("Lot Size : " + lotsize);
-
-           double tickValue= MarketInfo(NULL,MODE_TICKVALUE);
-           
-           if(Digits <= 3)
-           {
-              tickValue = tickValue/100 ;
-           }
-   
-           
-           Alert("tickValue: " + tickValue);
-
-           double maxLossDollar = accEquity * maxRiskPre;
-           Alert("maxLossDollar:" + maxLossDollar);
-
-           double maxLossInQuoteCurr = maxLossDollar / tickValue;
-           Alert("maxLossInQuoteCurr:" + maxLossInQuoteCurr);
-
-           double optimalLotSize = NormalizeDouble(maxLossInQuoteCurr / (maxLossInPips * GetPipValue())/lotsize,2);
-           return optimalLotSize;
-
-        }
-        
-4. 
-        //跟着上面那个方程一起使用，这个版本是直接输入进场与止损，自动算出最优头寸。
-         double OptimalLotSize(double maxRiskPre, double entryPrice, double stopLoss)
-        {
-           int maxLossInPips = MathAbs(entryPrice - stopLoss)/GetPipValue();
-           return OptimalLotSize(maxRiskPre,maxLossInPips);
-        }
-
-
-
 
 ---------------------------------------------------------------------------------------------------------------
 ########## 关于循环 ##########
