@@ -20,7 +20,7 @@
 --- 账户 ---
 11.AccountBalance() # 账户里现能交易的资金
 12.AccountEquity() # 账户里总余额，如果清算所有头寸的话
-13.OrdersTotal() # 现在总订单数量（开仓数）
+13.OrdersTotal() # 现在已开仓的订单数量（如果想知道每个特定的EA开仓了多少，请参照Useful_Function例子1）
 
 --- 风险管理 ---
 13. MarketInfo(NULL,MODE_TICKVALUE);  # 简单来说就是交易当前的货币对在美元下是多少钱，如果交易EURUSD的话就为1.
