@@ -1,0 +1,18 @@
+1. 这个方程式可以检查某个EA的订单数量，前提是我们要给每个EA下的订单特定一个MagicNumber。
+
+      bool CheckIfOpenOrdersByMagicNB(int magicNB)
+      {
+         int openOrders = OrdersTotal();
+
+          for(int i = 0 ; i < openOrders; i++)
+          {
+            if(OrderSelect(i,SELECT_BY_POS)== true)
+            {
+               if(OrderMagicNumber() == magicNB)
+               {
+                  return true;
+               }
+            }
+          }
+          return false;
+      }
