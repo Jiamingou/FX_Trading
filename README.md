@@ -5,6 +5,4 @@
 - Useful_Functions (一些有用的方程)
 
 ## 外汇知识笔记
-- Currency_Segmentation (货币类型的分类)
-  1. 我
-  2.   
+- Currency_Segmentation (货币类型的分类) 
