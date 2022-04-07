@@ -1,32 +1,32 @@
 ############ Ex_Commodity Floating ############  (有浮动制度，但不依赖单种商品的发达经济体)
 
-    -- Develop Float --                        -- EMEA Float --                       -- AsiaPac Float --
-1. US Dollar           (USD)               1. Czech Koruna        (CZK)           1. Korean Won          (KRW)
-2. Euro                (EUR)               2. Hungarian Forint    (HUF)           2. Philippine Peso     (PHP)
-3. Japanese Yen        (JPY)               3. Israeli Shekel      (ILS)           3. New Taiwan Dollar   (TWD)
-4. British Pound       (GBP)               4. Polish Zloty        (PLN)           4. Thai Baht           (BHT)
-5. Swiss Franc         (CHF)               5. Romanian Leu        (RON)           5. Vietnamese Dong     (VND)
-6. Swedish Krona       (SEK)               6. Ukranian Hryvnia    (UAH)           
+    -- Develop Float --                          -- EMEA Float --                       -- AsiaPac Float --
+1. US Dollar             (USD)               1. Czech Koruna        (CZK)           1. Korean Won            (KRW)
+2. Euro                  (EUR)               2. Hungarian Forint    (HUF)           2. Philippine Peso       (PHP)
+3. Japanese Yen          (JPY)               3. Israeli Shekel      (ILS)           3. New Taiwan Dollar     (TWD)
+4. British Pound         (GBP)               4. Polish Zloty        (PLN)           4. Thai Baht             (BHT)
+5. Swiss Franc           (CHF)               5. Romanian Leu        (RON)           5. Vietnamese Dong       (VND)
+6. Swedish Krona         (SEK)               6. Ukranian Hryvnia    (UAH)           
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ############ Ex_Commodity Pegged ############  (与括号内的货币进行挂钩制度，但不受单种商品出口影响)
 
       -- Develop PEG --                          -- Asia PEG --                       
-1. Danish Krone        (EUR/DKK)           1. Hong Kong Dollar    (USD/HKD)          
-                                           2. Singapore Dollar    (SGD/?)           
+1. Danish Krone          (EUR/DKK)           1. Hong Kong Dollar    (USD/HKD)          
+                                             2. Singapore Dollar    (SGD/?)           
            
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ############ Commodity Floating ############  (有浮动制度，并依赖个别商品的经济体)
 
--- Develop Commodity Float --               -- EMEA Commodity Float --                 -- AsiaPac Float --
-1. Australian Dollar   (AUD)               1. Czech Koruna        (CZK)           1. Korean Won          (KRW)
-2. New Zealand Dollar  (NZD)               2. Hungarian Forint    (HUF)           2. Philippine Peso     (PHP)
-3. Canadian Dollar     (CAD)               3. Israeli Shekel      (ILS)           3. New Taiwan Dollar   (TWD)
-4. Norwegian Kroner    (NOK)               4. Polish Zloty        (PLN)           4. Thai Baht           (BHT)
-                                           5. Romanian Leu        (RON)           5. Vietnamese Dong     (VND)
-                                           6. Ukranian Hryvnia    (UAH)           
+-- Develop Commodity Float --                 -- EMEA Commodity Float --             -- Asia Commodity Float --                 -- LATAM Commodity Float --
+1. Australian Dollar     (AUD)               1. Egyptian Pound      (EGP)           1. Indian Rupee          (INR)            1. Argentine Peso         (ARS)
+2. New Zealand Dollar    (NZD)               2. Icelandic Krona     (ISK)           2. Indonesian Rupiah     (IDR)            2. Brazilian Real         (BRL)
+3. Canadian Dollar       (CAD)               3. Russian Rouble      (RUB)           3. Kazakhstan Tenge      (KZT)            3. Chilean Peso           (CLP)
+4. Norwegian Kroner      (NOK)               4. South African Rand  (ZAR)           4. Malaysian Ringgit     (MYR)            4. Colombian Peso         (COP)
+                                             5. Turkish Lira        (TRY)                                                     5. Mexican Peso           (MXN)
+                                                                                                                              5. Peruvian New Sol       (PEN)
 
 
 
