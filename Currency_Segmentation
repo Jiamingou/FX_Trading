@@ -10,10 +10,10 @@
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-############ Ex_Commodity Pegged ############  (挂钩制度，但不受单种商品出口影响)
+############ Ex_Commodity Pegged ############  (与括号内的货币进行挂钩制度，但不受单种商品出口影响)
 
   -- Develop PEG --                        -- Asia PEG --                       
-1. Danish Krone         (EUR/DKK)        1. Hong Kong Dollar    (USD/HKD)          
+1. Danish Krone      (EUR/DKK)           1. Hong Kong Dollar    (USD/HKD)          
                                          2. Singapore Dollar    (SGD/?)           
            
 
