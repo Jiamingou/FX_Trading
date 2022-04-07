@@ -10,7 +10,6 @@
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 ############ Ex_Commodity Pegged ############  (挂钩制度，但不受单种商品出口影响)
 
   -- Develop PEG --                        -- Asia PEG --                       
@@ -19,6 +18,15 @@
            
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+############ Ex_Commodity Floating ############  (有浮动制度，但不依赖单种商品的发达经济体)
+
+  -- Develop Float --                      -- EMEA Float --                       -- AsiaPac Float --
+1. US Dollar         (USD)               1. Czech Koruna        (CZK)           1. Korean Won          (KRW)
+2. Euro              (EUR)               2. Hungarian Forint    (HUF)           2. Philippine Peso     (PHP)
+3. Japanese Yen      (JPY)               3. Israeli Shekel      (ILS)           3. New Taiwan Dollar   (TWD)
+4. British Pound     (GBP)               4. Polish Zloty        (PLN)           4. Thai Baht           (BHT)
+5. Swiss Franc       (CHF)               5. Romanian Leu        (RON)           5. Vietnamese Dong     (VND)
+6. Swedish Krona     (SEK)               6. Ukranian Hryvnia    (UAH)           
 
 
 
