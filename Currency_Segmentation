@@ -21,12 +21,12 @@
 ############ Commodity Floating ############  (有浮动制度，并依赖个别商品的经济体)
 
 -- Develop Commodity Float --               -- EMEA Commodity Float --                 -- AsiaPac Float --
-1. US Dollar           (USD)               1. Czech Koruna        (CZK)           1. Korean Won          (KRW)
-2. Euro                (EUR)               2. Hungarian Forint    (HUF)           2. Philippine Peso     (PHP)
-3. Japanese Yen        (JPY)               3. Israeli Shekel      (ILS)           3. New Taiwan Dollar   (TWD)
-4. British Pound       (GBP)               4. Polish Zloty        (PLN)           4. Thai Baht           (BHT)
-5. Swiss Franc         (CHF)               5. Romanian Leu        (RON)           5. Vietnamese Dong     (VND)
-6. Swedish Krona       (SEK)               6. Ukranian Hryvnia    (UAH)           
+1. Australian Dollar   (AUD)               1. Czech Koruna        (CZK)           1. Korean Won          (KRW)
+2. New Zealand Dollar  (NZD)               2. Hungarian Forint    (HUF)           2. Philippine Peso     (PHP)
+3. Canadian Dollar     (CAD)               3. Israeli Shekel      (ILS)           3. New Taiwan Dollar   (TWD)
+4. Norwegian Kroner    (NOK)               4. Polish Zloty        (PLN)           4. Thai Baht           (BHT)
+                                           5. Romanian Leu        (RON)           5. Vietnamese Dong     (VND)
+                                           6. Ukranian Hryvnia    (UAH)           
 
 
 
