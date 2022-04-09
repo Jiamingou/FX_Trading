@@ -37,7 +37,7 @@
                           Alert("Take Profit Price = " + takeProfitPrice);
 
                           //Send buy order
-                          int OrderID = OrderSend(NULL,OP_BUYSTOP,0.01,Ask+0.0001,10,stopLossPrice,takeProfitPrice);  // 注意BuyStop与BuyLimit混淆
+                          int OrderID = OrderSend(NULL,OP_BUYSTOP,0.01,Ask+0.0001,10,stopLossPrice,takeProfitPrice,NULL,magicNB);  // 注意BuyStop与BuyLimit混淆
                           if(OrderID <0)
                           {
                              Alert("Order Rejected :", GetLastError());
@@ -58,7 +58,7 @@
                           Alert("Take Profit Price = " + takeProfitPrice);
 
                           //Send short order
-                          int OrderID = OrderSend(NULL,OP_SELLSTOP,0.01,Bid-0.0001,10,stopLossPrice,takeProfitPrice);
+                          int OrderID = OrderSend(NULL,OP_SELLSTOP,0.01,Bid-0.0001,10,stopLossPrice,takeProfitPrice,NULL,magicNB);
                           if(OrderID <0)   //检查Order有没有错误，如果错误的话，总是会返回-1.
                           {
                              Alert("Order Rejected :", GetLastError());  //收到一个错误代码，详细请参考文档：https://docs.mql4.com/constants/errorswarnings/errorcodes
