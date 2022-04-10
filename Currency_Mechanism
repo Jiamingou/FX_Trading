@@ -3,10 +3,18 @@
   Balance_Of_Payment(BOP) = Current_Account_Balance(CAB) + Capital_Account(CA) + Financial_Account(FA) + Balancing_Item(BI)
   Current_Account_Balance(CAB) = Exports_minus_Imports(X-I) + Net_Income_from_Abroad (NI) + Net_Current_Transfers(NCT)
 
+2.
+  Net Credit = 贸易顺差(Trade Suplus) = 出口比进口多 = 替其它国家当打工人，把资源都发给其他国家让其它国家进步，收取他们的金钱
+  Net Debit = 贸易逆差(Trade Deficit) = 进口比出口多 = 坐收渔翁之利，当资本家
+  
+3.
+
+
 
 
 ########### Advantage of Floating Exchange Rate Regime ###########
-1. 市场自动平衡机制
+1. 
+  # 市场自动平衡机制
 
   --- 进口商 ---
   如果本国的汇率走高的话，意味着进口商会大肆购买国外相对便宜的商品。人们为了更多的便宜的货物，纷纷将本国的货币转换成它国货币(抛售本国货币，购入它国货币)，
