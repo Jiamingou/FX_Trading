@@ -61,7 +61,7 @@
   Alert("OrderID:" + orderID);                                              ,如果错误的话会返回-1。或者使用以下这个函数：GetLastError()
                                                                            # 错误详情请参考：https://docs.mql4.com/constants/errorswarnings/errorcodes 
 
-3. OrderModify()
+3. OrderModify(orderID,price,stopLoss,takeProfit,expiretime)  # 如果已经有仓位了，price可以改为0，不会有影响 。expiretime一般都是不需要的，可以放0。
 
 ----------------------------------------------------------------------------------------------------------------------
 ############### 技术指标 ###############
