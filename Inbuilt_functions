@@ -61,6 +61,8 @@
   Alert("OrderID:" + orderID);                                              ,如果错误的话会返回-1。或者使用以下这个函数：GetLastError()
                                                                            # 错误详情请参考：https://docs.mql4.com/constants/errorswarnings/errorcodes 
 
+3. OrderModify()
+
 ----------------------------------------------------------------------------------------------------------------------
 ############### 技术指标 ###############
 1. iMA() # https://docs.mql4.com/indicators/ima # 移动平均线，详细看这里的文档。
