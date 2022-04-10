@@ -6,3 +6,4 @@
 
 ## 外汇知识笔记
 - Currency_Segmentation (货币类型的分类) 
+- Currency_Mechanism (汇率的小知识)
