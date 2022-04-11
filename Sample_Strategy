@@ -127,7 +127,7 @@
 
                             if(TP != currentMidLine || SL != currentExitPoint) // 如果布林带指标发生变化
                             {
-                               bool Ans = OrderModify(OrderID,OrderOpenPrice(),currentExitPoint,currentMidLine,0);
+                               bool Ans = OrderModify(OrderID,OrderOpenPrice(),currentExitPoint,currentMidLine,0); // 更改订单
                                if(Ans == true) // 如果订单更改成功的话
                                {
                                   Alert("Order modified: "+ OrderID);
