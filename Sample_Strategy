@@ -5,92 +5,141 @@
               
               
                 --- 代码开始 ---
-                int magicNB = 22222;
+                #property show_inputs
+                #include <CustomFunctions01.mqh>
+
+
                 int bbPeriod = 20;
                 int band1Std = 1;
                 int band2Std = 4;
+                int magicNB = 88888;
+                input double maxlossPer = 0.02;
 
+                int OrderID; //如果这个EA重启的话，这个程序就会丢失原来的订单，建议找一种方法去更改这个程序。
+                
+                //+------------------------------------------------------------------+
+                //| Expert initialization function                                   |
+                //+------------------------------------------------------------------+
 
-                void OnStart()
-                 {
+                int OnInit()
+                  {
                 //---
 
                    Alert("");
-
-                   double bbLower1 = iBands(NULL,0,bbPeriod,band1Std,0,PRICE_CLOSE,MODE_LOWER,0);
-                   double bbUpper1 = iBands(NULL,0,bbPeriod,band1Std,0,PRICE_CLOSE,MODE_UPPER,0);
-                   double bbMid = iBands(NULL,0,bbPeriod,band1Std,0,PRICE_CLOSE,MODE_MAIN,0);
-
-                   double bbLower2 = iBands(NULL,0,bbPeriod,band2Std,0,PRICE_CLOSE,MODE_LOWER,0);
-                   double bbUpper2 = iBands(NULL,0,bbPeriod,band2Std,0,PRICE_CLOSE,MODE_UPPER,0);
-                   
-                   # 如果这个EA的没有发出订单的话 (我们通过Magic Number进行检验)
-                   if(!CheckIfOpenOrdersByMagicNB(magicNB))  //详细请参考Useful_Function例子1
-                   {
-                       if(Ask<bbLower1)//Buying
-                       {
-                          Alert("Price is below bbLower1, Sending buy order");
-                          double stopLossPrice = NormalizeDouble(bbLower2,Digits);
-                          double takeProfitPrice = NormalizeDouble(bbMid,Digits);
-                          Alert("Entry Price = " + (Ask+0.0001));
-                          Alert("Stop Loss Price = " + stopLossPrice);
-                          Alert("Take Profit Price = " + takeProfitPrice);
-
-                          //Send buy order
-                          int OrderID = OrderSend(NULL,OP_BUYSTOP,0.01,Ask+0.0001,10,stopLossPrice,takeProfitPrice,NULL,magicNB);  // 注意BuyStop与BuyLimit混淆
-                          if(OrderID <0)
-                          {
-                             Alert("Order Rejected :", GetLastError());
-                          }
-                          else
-                          {
-                             Alert("Order Sent");
-                          }
-
-                       }
-                       else if(Bid>bbUpper1)//Shorting
-                       {
-                          Alert("Price is above bbUpper1, Sending short order");
-                          double stopLossPrice = NormalizeDouble(bbUpper2,Digits);
-                          double takeProfitPrice = NormalizeDouble(bbMid,Digits);
-                          Alert("Entry Price = " + (Bid-0.0001));
-                          Alert("Stop Loss Price = " + stopLossPrice);
-                          Alert("Take Profit Price = " + takeProfitPrice);
-
-                          //Send short order
-                          int OrderID = OrderSend(NULL,OP_SELLSTOP,0.01,Bid-0.0001,10,stopLossPrice,takeProfitPrice,NULL,magicNB);
-                          if(OrderID <0)   //检查Order有没有错误，如果错误的话，总是会返回-1.
-                          {
-                             Alert("Order Rejected :", GetLastError());  //收到一个错误代码，详细请参考文档：https://docs.mql4.com/constants/errorswarnings/errorcodes
-                          }
-                          else
-                          { 
-                             Alert("Order Sent");
-                          }
-
-                       }
-                        else
-                       {
-                          Alert("Waiting for a chance to buy/short !!");
-                       }
+                   Alert("The EA just started.");
 
 
-
-                       /*
-                          // Prints
-                          Alert(NormalizeDouble(bbLower1,Digits));
-                          Alert(NormalizeDouble(bbUpper1,Digits));
-
-                          Alert(NormalizeDouble(bbLower2,Digits));
-                          Alert(NormalizeDouble(bbUpper2,Digits));
-
-                          Alert(NormalizeDouble(bbMid,Digits));
-                       */
-                }
-
+                //---
+                   return(INIT_SUCCEEDED);
+                  }
                 //+------------------------------------------------------------------+
+                //| Expert deinitialization function                                 |
+                //+------------------------------------------------------------------+
+                void OnDeinit(const int reason)
+                  {
+                //---
+                
+                   Alert("The EA just Close.") ;
+
+                  }
+                //+------------------------------------------------------------------+
+                //| Expert tick function                                             |
+                //+------------------------------------------------------------------+
+                void OnTick()
+                  {
+                //---
+                    Alert("");
+
+                    double bbLower1 = iBands(NULL,0,bbPeriod,band1Std,0,PRICE_CLOSE,MODE_LOWER,0);
+                    double bbUpper1 = iBands(NULL,0,bbPeriod,band1Std,0,PRICE_CLOSE,MODE_UPPER,0);
+                    double bbMid = iBands(NULL,0,bbPeriod,band1Std,0,PRICE_CLOSE,MODE_MAIN,0);
+
+                    double bbLower2 = iBands(NULL,0,bbPeriod,band2Std,0,PRICE_CLOSE,MODE_LOWER,0);
+                    double bbUpper2 = iBands(NULL,0,bbPeriod,band2Std,0,PRICE_CLOSE,MODE_UPPER,0);
+
+                    // 如果这个EA的没有发出订单的话 (我们通过Magic Number进行检验)
+                    if(!CheckIfOpenOrdersByMagicNB(magicNB))  //详细请参考Useful_Function例子1
+                    {
+                        if(Ask<bbLower1) //如果报价在bbLower1之下，选择购入
+                        {
+                           Alert("Price is below bbLower1, Sending buy order");
+                           double stopLossPrice = NormalizeDouble(bbLower2,Digits);
+                           double takeProfitPrice = NormalizeDouble(bbMid,Digits);
+                           Alert("Entry Price = " + (Ask+0.0001));
+                           Alert("Stop Loss Price = " + stopLossPrice);
+                           Alert("Take Profit Price = " + takeProfitPrice);
+
+                           //Send buy order
+                           OrderID = OrderSend(NULL,OP_BUYSTOP,0.01,Ask+0.0001,10,stopLossPrice,takeProfitPrice,NULL,magicNB);  // 注意BuyStop与BuyLimit混淆
+                           if(OrderID <0)
+                           {
+                              Alert("Order Rejected :", GetLastError());
+                           }
+                           else
+                           {
+                              Alert("Order Sent");
+                           }
+
+                        }
+                        else if(Bid>bbUpper1) //如果报价在bbUpper1之上，选择做空
+                        {
+                           Alert("Price is above bbUpper1, Sending short order");
+                           double stopLossPrice = NormalizeDouble(bbUpper2,Digits);
+                           double takeProfitPrice = NormalizeDouble(bbMid,Digits);
+                           Alert("Entry Price = " + (Bid-0.0001));
+                           Alert("Stop Loss Price = " + stopLossPrice);
+                           Alert("Take Profit Price = " + takeProfitPrice);
+
+                           //Send short order
+                           OrderID = OrderSend(NULL,OP_SELLSTOP,0.01,Bid-0.0001,10,stopLossPrice,takeProfitPrice,NULL,magicNB);
+                           if(OrderID <0)   //检查Order有没有错误，如果错误的话，总是会返回-1.
+                           {
+                              Alert("Order Rejected :", GetLastError());  //收到一个错误代码，详细请参考文档：https://docs.mql4.com/constants/errorswarnings/errorcodes
+                           }
+                           else
+                           { 
+                              Alert("Order Sent");
+                           }
+                         }     
+                      }
+                      else // 如果这个EA已经有仓位的话，持续更新止损与止盈
+                      {
+
+                         //Alert("Order Already Open");   
+                         Alert(OrderID);  //如果返回的OrderID为零，证明程序已经被重置了，找不到原来的订单
+                         if(OrderSelect(OrderID,SELECT_BY_TICKET)==true)
+                         {
+                            int orderType = OrderType(); // 0 = Long, 1 = Short, 2 = buylimit, 3 = selllimit, 4 = buystop, 5 = sellstop
+                            double currentExitPoint;
+                            double currentMidLine = NormalizeDouble(bbMid,Digits);
+
+                            if(orderType == 4 || orderType == 0 || orderType == 2) //如果做多的话，我这个程序发送订单的时候订单为4，有仓位的时候订单就为0，
+                            {
+                               currentExitPoint = NormalizeDouble(bbLower2,Digits);
+                            }
+                            else // 如果是做空的话
+                            {
+                               currentExitPoint = NormalizeDouble(bbUpper2,Digits);
+                            }
+
+                            double TP = OrderTakeProfit();
+                            double SL = OrderStopLoss();     
+
+                            if(TP != currentMidLine || SL != currentExitPoint) // 如果布林带指标发生变化
+                            {
+                               bool Ans = OrderModify(OrderID,OrderOpenPrice(),currentExitPoint,currentMidLine,0);
+                               if(Ans == true) // 如果订单更改成功的话
+                               {
+                                  Alert("Order modified: "+ OrderID);
+                               }  
+                            }
+                         }
+
+                      }
+
                 }
-              
+                //+------------------------------------------------------------------+
+
               
 2.               
   
