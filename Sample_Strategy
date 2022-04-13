@@ -144,5 +144,164 @@
                 //+------------------------------------------------------------------+
 
               
-2.               
-  
+              
+2.  第二个也是布林带策略，我们先设置三种布林带，时间段都为50天，布林带的Std分别为1,2,6
+    进场：触碰到Std为2的布林带，且蜡烛开盘在布林带的另一边(修复了策略1的缺陷)，且强度指标小于40或大于60（取决于做多还是做空）
+    止盈：触碰到另一边Std为1的布林带
+    止损：触碰到Std为6的布林带
+    
+    # 这个策略本身也有逻辑缺陷：止损后立马开新仓(如果一根Bar太长的话，会直接从开仓插到止损)
+
+                --- 代码开始 ---
+                int magicNB = 55555;
+                input int bbPeriod = 50;
+
+                input int bandStdEntry = 2;
+                input int bandStdProfitExit = 1;
+                input int bandStdLossExit = 6;
+                int rsiPeriod = 14;
+                input double riskPerTrade = 0.02;
+                input int rsiLowerLevel = 40;
+                input int rsiUpperLevel = 60;
+
+
+                int openOrderID; //IF we restart the EA, the the program will not work, because the OrderID has lost.
+                //+------------------------------------------------------------------+
+                //| Expert initialization function                                   |
+                //+------------------------------------------------------------------+
+
+                int OnInit()
+                  {
+                //---
+
+                   Alert("");
+                   Alert("Starting Strategy BB 2Bands MR");
+
+
+                //---
+                   return(INIT_SUCCEEDED);
+                  }
+                //+------------------------------------------------------------------+
+                //| Expert deinitialization function                                 |
+                //+------------------------------------------------------------------+
+                void OnDeinit(const int reason)
+                  {
+                //---
+                   Alert("Stopping Strategy BB 2Bands MR") ;
+
+                  }
+                //+------------------------------------------------------------------+
+                //| Expert tick function                                             |
+                //+------------------------------------------------------------------+
+                void OnTick()
+                  {
+                //---
+                    //Alert("");
+
+                    double bbLowerEntry = iBands(NULL,0,bbPeriod,bandStdEntry,0,PRICE_CLOSE,MODE_LOWER,0);
+                    double bbUpperEntry = iBands(NULL,0,bbPeriod,bandStdEntry,0,PRICE_CLOSE,MODE_UPPER,0);
+                    double bbMid = iBands(NULL,0,bbPeriod,bandStdEntry,0,PRICE_CLOSE,0,0);
+
+                    double bbLowerProfitExit = iBands(NULL,0,bbPeriod,bandStdProfitExit,0,PRICE_CLOSE,MODE_LOWER,0);
+                    double bbUpperProfitExit = iBands(NULL,0,bbPeriod,bandStdProfitExit,0,PRICE_CLOSE,MODE_UPPER,0);
+
+                    double bbLowerLossExit = iBands(NULL,0,bbPeriod,bandStdLossExit,0,PRICE_CLOSE,MODE_LOWER,0);
+                    double bbUpperLossExit = iBands(NULL,0,bbPeriod,bandStdLossExit,0,PRICE_CLOSE,MODE_UPPER,0);
+
+                    double rsiValue = iRSI(NULL,0,rsiPeriod,PRICE_CLOSE,0);
+
+                    // 如果这个EA的没有发出订单的话 (我们通过Magic Number进行检验)
+                    if(!CheckIfOpenOrdersByMagicNB(magicNB))  //详细请参考Useful_Function例子1
+                    {
+                        if(Ask < bbLowerEntry && Open[0] > bbLowerEntry && rsiValue < rsiLowerLevel)//Buying
+                        {
+                           Alert("Price is below bbLower, and rsiValue is Lower than " + rsiLowerLevel + ",Sending buy order");
+                           double stopLossPrice = NormalizeDouble(bbLowerLossExit,Digits);
+                           double takeProfitPrice = NormalizeDouble(bbUpperProfitExit,Digits);
+                           Alert("Entry Price = " + Ask);
+                           Alert("Stop Loss Price = " + stopLossPrice);
+                           Alert("Take Profit Price = " + takeProfitPrice);
+
+                           double lotSize = OptimalLotSize(riskPerTrade,Ask,stopLossPrice);
+
+                           //Send buy order
+                           openOrderID = OrderSend(NULL,OP_BUY,lotSize,Ask,10,stopLossPrice,takeProfitPrice,NULL,magicNB);  // 注意BuyStop与BuyLimit混淆
+                           if(openOrderID <0)
+                           {
+                              Alert("Order Rejected :", GetLastError());
+                           }
+                           else
+                           {
+                              Alert("Order Sent");
+                           }
+
+                        }
+                        else if(Bid > bbUpperEntry && Open[0] < bbUpperEntry && rsiValue > rsiUpperLevel)//Shorting
+                        {
+                           Alert("Price is above bbUpper and rsiValue is above "+ rsiUpperLevel + ", Sending short order");
+                           double stopLossPrice = NormalizeDouble(bbUpperLossExit,Digits);
+                           double takeProfitPrice = NormalizeDouble(bbLowerProfitExit,Digits);
+                           Alert("Entry Price = " + Bid);
+                           Alert("Stop Loss Price = " + stopLossPrice);
+                           Alert("Take Profit Price = " + takeProfitPrice);
+
+                           double lotSize = OptimalLotSize(riskPerTrade,Bid,stopLossPrice);
+
+                           //Send short order
+                           openOrderID = OrderSend(NULL,OP_SELL,lotSize,Bid,10,stopLossPrice,takeProfitPrice,NULL,magicNB);
+                           if(openOrderID <0)   //检查Order有没有错误，如果错误的话，总是会返回-1.
+                           {
+                              Alert("Order Rejected :", GetLastError());  //收到一个错误代码，详细请参考文档：https://docs.mql4.com/constants/errorswarnings/errorcodes
+                           }
+                           else
+                           { 
+                              Alert("Order Sent");
+                           }
+                         }     
+                      }
+                      else //If already in position, keep updating the takeprofit and stoploss
+                      {
+
+                         //Alert("Order Already Open");   
+                         Alert(openOrderID);  //If it prints out 0, that mean the program is broken
+                         if(OrderSelect(openOrderID,SELECT_BY_TICKET)==true)
+                         {
+                            int orderType = OrderType(); // 0 = Long, 1 = Short, 2 = buylimit, 3 = selllimit, 4 = buystop, 5 = sell stop
+
+                            double optimalTakeProfit;  
+
+                            if(orderType == 0)
+                            {
+                               optimalTakeProfit = NormalizeDouble(bbUpperProfitExit,Digits);
+                            }
+                            else //if short
+                            {
+                               optimalTakeProfit = NormalizeDouble(bbLowerProfitExit,Digits);
+                            }
+
+
+                            double TP = OrderTakeProfit();
+                            double TPdistance = MathAbs(TP - optimalTakeProfit);
+                            if (TP != optimalTakeProfit && TPdistance >0.0001)
+                            {
+                               //Print("Modifying order")
+                               bool Ans = OrderModify(openOrderID,OrderOpenPrice(),OrderStopLoss(),optimalTakeProfit,0);
+
+                               if (Ans == true)
+                               {
+                                  Alert("Order modified: ", openOrderID);
+                                  return;
+                               }
+                               else
+                               {
+                                  Alert("Unable to modify order: ",openOrderID);
+                               }
+                            }  
+                         }
+
+                      }
+
+                }
+                //+------------------------------------------------------------------+
+
+
