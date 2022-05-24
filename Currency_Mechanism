@@ -1,4 +1,3 @@
-########### Knowledge ###########
 1 . 
   Balance_Of_Payment(BOP) = Current_Account_Balance(CAB) + Capital_Account(CA) + Financial_Account(FA) + Balancing_Item(BI)
   Current_Account_Balance(CAB) = Exports_minus_Imports(X-I) + Net_Income_from_Abroad (NI) + Net_Current_Transfers(NCT)
