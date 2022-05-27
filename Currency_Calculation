@@ -4,6 +4,7 @@
   AUD/USD  0.78095 = "1 Australian Dollar Buys 0.78095 USD"
   
   AUD/JPY = AUD/USD * USD/JPY = 0.78095 * 119.786 = 93.547 = "1 Australian Dollar Buys 93.547 Japanese Yen"
+  JPY/AUD = 1/(AUD/JPY) = 1/(93.547) = 0.0107 = "1 Japanese Yen Buys 0.0107 Australian Dollar "
 
 2.
   
