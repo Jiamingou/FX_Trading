@@ -35,11 +35,14 @@
 5. 
   ******** Profit and Loss ********
   `Base and Cents
-   Buy 1 Lot of EUR/USD at 1.10356 i.e. (BUY EUR 100,000 / SELL USD 110,356).
+   Buy 1 Lot of EUR/USD at 1.10356 (i.e. BUY EUR 100,000 / SELL USD 110,356).
    收益通常是用货币对右边的货币来结算的，如果EUR/USD涨到1.12479，我们赚了100,000 * (1.12479 - 1.10356) = $2123 USD。但如果我们账号是EUR账号的话，那么我们还需要将收益按现在的
    汇率转化回来EUR，也就是 $2123 / 1.12479 = 1887.463 EUR
 
-
+  `Pip Value
+   Buy 1 Lot of GBP/USD at 1.52518 (i.e. BUY GBP 100,000/ SELL USD 152,518)
+   Sell 1 Lot of GBP/USD at 1.54622 (i.e. Sell GBP 100,000/ Buy USD 154,622)
+   在这个例子里，一个pip是0.0001，那么我们赚了 (1.54622 - 1.52518) / 0.0001 = 210 Pips
 
 
 
