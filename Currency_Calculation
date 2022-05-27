@@ -1,2 +1,9 @@
 1.
   Left to Right Convention
+  USD/JPY  119.786 = "1 US Dollar Buys 119.786 Japanese Yen"
+  AUD/USD  0.78095 = "1 Australian Dollar Buys 0.78095 USD"
+  
+  AUD/JPY = AUD/USD * USD/JPY = 0.78095 * 119.786 = 93.547 = "1 Australian Dollar Buys 93.547 Japanese Yen"
+
+2.
+  
