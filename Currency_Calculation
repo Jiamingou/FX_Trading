@@ -1,5 +1,5 @@
 1.
-  ******** Left to Right Convention (计算汇率，左边的被称为Based Currency，右边的被称为Quoted Currency) ******** 
+  ******** Left to Right Convention ********  (计算汇率，左边的被称为Based Currency，右边的被称为Quoted Currency) 
   
   ` AUD/USD  0.78095 = "1 Australian Dollar Buys 0.78095 USD"
     USD/JPY  119.786 = "1 US Dollar Buys 119.786 Japanese Yen"
@@ -32,8 +32,12 @@
   `第一，不要重仓，波动率是等来的，而不是自己制造的，如果货币对每天只移动两个pip，就换个货币对吧，不要去重仓低波动率的货币，而单纯只为了放大那两个pip的收益。
   `第二，永远不要被强迫止损出场，宁愿存多点金，小仓位，也不要存少点金，大仓位。把风险与止损掌握在自己手中。
 
-
-
+5. 
+  ******** Profit and Loss ********
+  `Base and Cents
+   Buy 1 Lot of EUR/USD at 1.10356 i.e. (BUY EUR 100,000 / SELL USD 110,356).
+   如果EUR/USD涨到1.12479，我们赚了100,000 * (1.12479 - 1.10356) = $2123 USD
+   但如果账号是EUR结算的话，那么还需要再转换回来，也就是 $2123 / 1.12479 = 1887.463 EUR
 
 
 
