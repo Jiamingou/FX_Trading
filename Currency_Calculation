@@ -42,8 +42,14 @@
   `Pip Value
    Buy 1 Lot of GBP/USD at 1.52518 (i.e. BUY GBP 100,000/ SELL USD 152,518)
    Sell 1 Lot of GBP/USD at 1.54622 (i.e. Sell GBP 100,000/ Buy USD 154,622)
-   在这个例子里，一个pip是0.0001，那么我们赚了 (1.54622 - 1.52518) / 0.0001 = 210 Pips
-
+   在这个例子里，一个pip是0.0001，那么我们赚了 (1.54622 - 1.52518) / 0.0001 = 210 Pips，因为我们买一个lot，那1个pip的value就等同于0.0001*100,000=10，那么我们的利润就是
+   210 * 10 = 2100 USD，如果想要换算成GBP的话，就用 2100 / 1.54622 = 1358.15 GBP
+   
+   下面给个表格方面换算，括号{}里面的数字都可以换
+   Lot        = Broker Quote = 1 pip = {0.0001}  or {0.0001} * 100,000  = {$10}
+   Mini Lot   = Broker Quote = 1 pip = {0.0001}  or {0.0001} * 10,000   = {$1}
+   Micro Lot  = Broker Quote = 1 pip = {0.0001}  or {0.0001} * 1,000    = {$0.1}
+   Nano Lot   = Broker Quote = 1 pip = {0.0001}  or {0.0001} * 100      = {$0.01}
 
 
 
