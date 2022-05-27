@@ -1,5 +1,5 @@
 1.
-  ******** Left to Right Convention (计算汇率) ******** 
+  ******** Left to Right Convention (计算汇率，左边的被称为Based Currency，右边的被称为Quoted Currency) ******** 
   
   ` AUD/USD  0.78095 = "1 Australian Dollar Buys 0.78095 USD"
     USD/JPY  119.786 = "1 US Dollar Buys 119.786 Japanese Yen"
