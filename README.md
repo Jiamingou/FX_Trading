@@ -8,3 +8,6 @@
 - Currency_Segmentation (货币类型的分类) 
 - Currency_Mechanism (关于汇率的知识点)
 - Currency_Calculation (关于汇率的计算)
+
+## 外汇基础指标
+- Currency_Fundamental (分数卡/指标大全)
