@@ -10,4 +10,4 @@
 - Currency_Calculation (关于汇率的计算)
 
 ## 外汇基础指标
-- Currency_Fundamental (分数卡/指标大全)
+- Macro_Fundamentals (分数卡/指标大全)
