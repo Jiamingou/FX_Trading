@@ -6,8 +6,8 @@
 
 ## 外汇知识笔记
 - Currency_Segmentation (货币类型的分类) 
-- Currency_Mechanism (关于汇率的知识点)
+- Currency_Fundamentals (关于汇率的知识点)
 - Currency_Calculation (关于汇率的计算)
 
 ## 外汇基础指标
-- Macro_Fundamentals (分数卡/指标大全)
+- Score_Cards (分数卡/指标大全)
